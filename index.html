@@ -1,35 +1,53 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Tax Map</title>
-		<style>
-			.country {
-				stroke: #fff;
-				stroke-width: 0.5;
-			}
 
-			.tooltip {
-				position: absolute;
-				text-align: center;
-				width: 100px;
-				height: 28px;
-				padding: 2px;
-				font: 12px sans-serif;
-				background: lightsteelblue;
-				border: 0px;
-				border-radius: 8px;
-				pointer-events: none;
-			}
-		</style>
-	</head>
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" href="/favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Tax Map</title>
+	<style>
+		.country {
+			stroke: #fff;
+			stroke-width: 0.5;
+		}
 
-	<body>
-		<div id="app">
-			<svg width="960" height="600"></svg>
-		</div>
-		<script type="module" src="/src/main.ts"></script>
-	</body>
+		.tooltip {
+			position: absolute;
+			text-align: center;
+			width: 100px;
+			padding: 0.5em;
+			font: 12px sans-serif;
+			background: lightsteelblue;
+			border: 0px;
+			border-radius: 8px;
+			opacity: 0;
+			transition: opacity 0.3s;
+			display: none;
+		}
+
+		.tooltip.showing {
+			opacity: 0.8;
+			display: block;
+		}
+
+		.tooltip.hiding {
+			opacity: 0;
+			display: block;
+		}
+
+		svg .selected {
+			fill: orange;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<svg width="960" height="600"></svg>
+	</div>
+	<div id="tooltip" class="tooltip"></div>
+	<script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
